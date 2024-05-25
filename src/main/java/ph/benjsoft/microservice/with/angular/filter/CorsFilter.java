@@ -15,6 +15,12 @@ public class CorsFilter implements Filter {
     @Value("${cors.allowed.origins}")
     private List<String> allowedOrigins;
 
+    @Value("${cors.allowed.headers}")
+    private List<String> allowedHeaders;
+
+    @Value("${cors.allowed.methods}")
+    private List<String> allowedMethods;
+
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         // Initialization logic
@@ -28,8 +34,8 @@ public class CorsFilter implements Filter {
         String origin = req.getHeader("Origin");
         if(allowedOrigins.contains(origin)) {
             res.setHeader("Access-Control-Allow-Origin", origin);
-            res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-            res.setHeader("Access-Control-Allow-Headers", "Authorization, Content-Type, Accept");
+            res.setHeader("Access-Control-Allow-Methods", String.join(", ", allowedMethods));
+            res.setHeader("Access-Control-Allow-Headers", String.join(", ", allowedHeaders));
             res.setHeader("Access-Control-Allow-Credentials", "true");
             res.setHeader("Access-Control-Max-Age", "3600");
         }
