@@ -1,13 +1,11 @@
 package ph.benjsoft.microservice.with.angular.controller;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ph.benjsoft.microservice.with.angular.model.UserResponse;
 
 @RestController
-@CrossOrigin("*") // you don't need this when running within spring boot!
 public class UserController {
 
     @GetMapping("/api/greet")
