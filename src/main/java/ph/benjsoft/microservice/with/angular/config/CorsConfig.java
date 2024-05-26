@@ -32,7 +32,7 @@ public class CorsConfig {
         corsConfig.setMaxAge(Duration.ofMillis(3600));
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/api/**", corsConfig);
+        source.registerCorsConfiguration("/**", corsConfig);
 
         return new CorsWebFilter(source);
     }
