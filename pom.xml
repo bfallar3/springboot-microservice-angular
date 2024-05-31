@@ -67,6 +67,33 @@
 					</excludes>
 				</configuration>
 			</plugin>
+
+			<plugin>
+				<groupId>io.snyk</groupId>
+				<artifactId>snyk-maven-plugin</artifactId>
+				<version>2.2.0</version>
+				<inherited>false</inherited>
+				<executions>
+					<execution>
+						<id>snyk-test</id>
+						<goals>
+							<goal>test</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>snyk-monitor</id>
+						<goals>
+							<goal>monitor</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<apiToken>cea0ee7c-41ce-4a37-a39f-007086fcb221</apiToken>
+					<args>
+						<arg>--all-projects</arg>
+					</args>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
